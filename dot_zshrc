@@ -1,0 +1,61 @@
+# Startup
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(fnm env --use-on-cd)"
+eval "$(atuin init zsh)"
+setopt autocd
+
+# Path
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+export ZVM_INSTALL="$HOME/.zvm"
+export PATH="$HOME/.zvm/bin:$HOME/.zvm/self:$PATH"
+
+export LIBVA_DRIVER_NAME=nvidia
+export NVD_BACKEND=direct
+export MOZ_DISABLE_RDD_SANDBOX=1
+export LC_MESSAGES=en_US.UTF-8
+export TERMINAL=ghostty
+export EDITOR="gnome-text-editor --new-window"
+export VISUAL="gnome-text-editor --new-window"
+
+# Fcitx5 Input Method Config
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
+
+# History Config
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+# Zsh Plugins
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Ctrl+K to Clean Screen
+function clear_screen() {
+    printf '\e[2J\e[3J\e[H'
+    if [[ -n "$ZLE_STATE" ]]; then
+        zle reset-prompt
+    fi
+}
+zle -N clear_screen
+bindkey '^K' clear_screen
+
+# Alias
+alias zed="zeditor"
+alias yay="paru"
+alias y="yazi"
+
+# Environment
+if [[ -f ~/.zsh_secrets ]]; then
+    source ~/.zsh_secrets
+fi

@@ -1,0 +1,10 @@
+cursor-style = block
+font-family = MesloLGL Nerd Font
+font-size = 18
+window-decoration = false
+background-opacity = 0.85
+theme = Catppuccin Macchiato
+copy-on-select = true
+mouse-hide-while-typing = true
+custom-shader = "~/.config/ghostty/shaders/cursor_smear.glsl"
+
