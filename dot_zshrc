@@ -15,15 +15,6 @@ export NVD_BACKEND=direct
 export MOZ_DISABLE_RDD_SANDBOX=1
 export LC_MESSAGES=en_US.UTF-8
 export TERMINAL=ghostty
-export EDITOR="gnome-text-editor --new-window"
-export VISUAL="gnome-text-editor --new-window"
-
-# Fcitx5 Input Method Config
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export SDL_IM_MODULE=fcitx
-export GLFW_IM_MODULE=ibus
 
 # History Config
 export HISTFILE=~/.zsh_history
