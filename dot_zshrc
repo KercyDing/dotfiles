@@ -41,6 +41,8 @@ zle -N clear_screen
 bindkey '^K' clear_screen
 
 # Alias
+alias vi="nvim"
+alias vim="nvim"
 alias zed="zeditor"
 alias yay="paru"
 alias y="yazi"
