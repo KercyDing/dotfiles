@@ -13,7 +13,6 @@ export PATH="$HOME/.zvm/bin:$HOME/.zvm/self:$PATH"
 export LIBVA_DRIVER_NAME=nvidia
 export NVD_BACKEND=direct
 export MOZ_DISABLE_RDD_SANDBOX=1
-export LC_MESSAGES=en_US.UTF-8
 export TERMINAL=ghostty
 
 # History Config
