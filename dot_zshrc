@@ -45,7 +45,6 @@ alias vi="nvim"
 alias vim="nvim"
 alias zed="zeditor"
 alias yay="paru"
-alias y="yazi"
 
 # Environment
 if [[ -f ~/.zsh_secrets ]]; then
