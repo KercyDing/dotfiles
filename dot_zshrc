@@ -41,7 +41,8 @@ zle -N clear_screen
 bindkey '^K' clear_screen
 
 # Alias
-alias cl="clear"
+alias clear="printf '\e[2J\e[3J\e[H'"
+alias c="clear"
 alias vi="nvim"
 alias vim="nvim"
 alias zed="zeditor"

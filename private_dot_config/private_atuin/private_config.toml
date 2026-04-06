@@ -120,7 +120,7 @@ inline_height = 15
 ## https://docs.rs/regex/latest/regex/#syntax
 history_filter = [
   "^clear$",
-  "^cl$"
+  "^c$"
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
