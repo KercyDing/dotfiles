@@ -41,8 +41,15 @@ zle -N clear_screen
 bindkey '^K' clear_screen
 
 # Alias
+alias cl="clear"
 alias vi="nvim"
 alias vim="nvim"
 alias zed="zeditor"
 alias yay="paru"
+alias l='eza --color=always --group-directories-first --icons=always'
+alias ls='eza --color=always --group-directories-first --icons=always'
+alias la='eza -a --color=always --group-directories-first --icons=always'
+alias ll='eza -l --color=always --group-directories-first --icons=always'
+alias lla='eza -la --color=always --group-directories-first --icons=always'
+alias lt='eza -aT --color=always --group-directories-first --icons'
 
