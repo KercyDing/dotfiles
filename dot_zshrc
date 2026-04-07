@@ -3,7 +3,6 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fnm env --use-on-cd)"
 eval "$(atuin init zsh)"
-setopt autocd
 
 # Path
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
