@@ -6,8 +6,7 @@ eval "$(atuin init zsh)"
 
 # Path
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-export ZVM_INSTALL="$HOME/.zvm"
-export PATH="$HOME/.zvm/bin:$HOME/.zvm/self:$PATH"
+export PATH="/home/kercy/.bun/bin:$PATH"
 
 export LIBVA_DRIVER_NAME=nvidia
 export NVD_BACKEND=direct
