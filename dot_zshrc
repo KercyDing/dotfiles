@@ -5,8 +5,7 @@ eval "$(fnm env --use-on-cd)"
 eval "$(atuin init zsh)"
 
 # Path
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
-export PATH="/home/kercy/.bun/bin:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.bun/bin:$PATH"
 
 export LIBVA_DRIVER_NAME=nvidia
 export NVD_BACKEND=direct
