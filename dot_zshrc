@@ -54,6 +54,6 @@ alias tree='eza -T'
 alias grep='rg'
 alias find='fd'
 alias pon='export http_proxy="http://127.0.0.1:7890" https_proxy="http://127.0.0.1:7890" all_proxy="socks5://127.0.0.1:7890"'
-alias pof='unset http_proxy https_proxy all_proxy; echo -e "\e[31m[-] Proxy on.\e[0m"'
+alias pof='unset http_proxy https_proxy all_proxy; echo -e "\e[31m[-] Proxy off.\e[0m"'
 pon
 
