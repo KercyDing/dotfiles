@@ -9,7 +9,6 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/share/pnpm/bin:$PATH"
-export PATH="$HOME/.local/share/.zm/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 export PATH="$HOME/depot_tools:$PATH"
 
@@ -62,21 +61,15 @@ alias tree='eza -T --git-ignore'
 function pon() {
     export http_proxy="http://127.0.0.1:7890"
     export https_proxy="http://127.0.0.1:7890"
-    export all_proxy="socks5://127.0.0.1:7890"
-    
     export HTTP_PROXY="http://127.0.0.1:7890"
     export HTTPS_PROXY="http://127.0.0.1:7890"
-    export ALL_PROXY="socks5://127.0.0.1:7890"
 }
 
 function pof() {
     unset http_proxy
     unset https_proxy
-    unset all_proxy
-    
     unset HTTP_PROXY
     unset HTTPS_PROXY
-    unset ALL_PROXY
     
     echo "Closed."
 }
