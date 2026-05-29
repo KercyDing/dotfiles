@@ -12,18 +12,17 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function(event)
     vim.keymap.set("n", "q", "<cmd>close<CR>", {
       buffer = event.buf,
-      desc = "Close quickfix/location list",
+      desc = "Quit quickfix/location list",
     })
   end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "qf", "help" },
+  pattern = "help",
   callback = function(event)
     vim.keymap.set("n", "q", "<cmd>close<CR>", {
       buffer = event.buf,
-      desc = "Close window",
+      desc = "Quit window",
     })
   end,
 })
-
