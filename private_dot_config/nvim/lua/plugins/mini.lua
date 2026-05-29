@@ -11,6 +11,10 @@ return {
       require("mini.files").setup()
       require("mini.pick").setup()
       require("mini.extra").setup()
+      require("mini.diff").setup()
+      require("mini.git").setup()
+      require("mini.trailspace").setup()
+      require("mini.bracketed").setup()
 
       local map = vim.keymap.set
       local files = require("mini.files")
@@ -35,6 +39,10 @@ return {
       map("n", "<leader>fh", function()
         pick.builtin.help()
       end, { desc = "Help tags" })
+
+      map("n", "<leader>cw", function()
+        require("mini.trailspace").trim()
+      end, { desc = "Trim trailing whitespace" })
     end,
   },
 }
