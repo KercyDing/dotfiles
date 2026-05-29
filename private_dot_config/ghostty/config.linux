@@ -9,3 +9,7 @@ theme = TokyoNight
 copy-on-select = true
 mouse-hide-while-typing = true
 custom-shader = "~/.config/ghostty/shaders/cursor_smear.glsl"
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+j=goto_split:down
