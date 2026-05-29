@@ -8,7 +8,29 @@ return {
       require("mini.pairs").setup()
       require("mini.surround").setup()
       require("mini.ai").setup()
-      require("mini.files").setup()
+      require("mini.files").setup({
+        mappings = {
+          close = "q",
+          go_in = "l",
+          go_in_plus = "<CR>",
+          go_out = "h",
+          go_out_plus = "H",
+          mark_goto = "'",
+          mark_set = "m",
+          reset = "<BS>",
+          reveal_cwd = "@",
+          show_help = "g?",
+          synchronize = "=",
+          trim_left = "<",
+          trim_right = ">",
+        },
+        windows = {
+          preview = true,
+          width_focus = 40,
+          width_nofocus = 25,
+          width_preview = 60,
+        },
+      })
       require("mini.pick").setup()
       require("mini.extra").setup()
       require("mini.diff").setup()
