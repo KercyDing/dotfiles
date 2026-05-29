@@ -1,0 +1,139 @@
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=ghostty
+
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
+
+{{- if eq .chezmoi.os "darwin" }}
+
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+export HOMEBREW_NO_ENV_HINTS=1
+
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+{{- else if eq .chezmoi.os "linux" }}
+
+export PATH="$HOME/.local/share/pnpm/bin:$PATH"
+export PATH="$HOME/depot_tools:$PATH"
+
+export LIBVA_DRIVER_NAME=nvidia
+export NVD_BACKEND=direct
+export MOZ_DISABLE_RDD_SANDBOX=1
+
+{{- end }}
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd)"
+fi
+
+if command -v atuin >/dev/null 2>&1; then
+  eval "$(atuin init zsh)"
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+fi
+
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+
+{{- if eq .chezmoi.os "darwin" }}
+
+if command -v brew >/dev/null 2>&1; then
+  ZSH_HIGHLIGHT="$(brew --prefix 2>/dev/null)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  ZSH_AUTOSUGGEST="$(brew --prefix 2>/dev/null)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+  [ -r "$ZSH_HIGHLIGHT" ] && source "$ZSH_HIGHLIGHT"
+  [ -r "$ZSH_AUTOSUGGEST" ] && source "$ZSH_AUTOSUGGEST"
+fi
+
+{{- else if eq .chezmoi.os "linux" }}
+
+[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -r /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+{{- end }}
+
+function clear_screen() {
+  printf '\e[2J\e[3J\e[H'
+  if [[ -n "$ZLE_STATE" ]]; then
+    zle reset-prompt
+  fi
+}
+zle -N clear_screen
+bindkey '^K' clear_screen
+
+alias clear="printf '\e[2J\e[3J\e[H'"
+alias c="clear"
+alias vi="nvim"
+alias vim="nvim"
+
+if command -v zeditor >/dev/null 2>&1; then
+  alias zed="zeditor"
+fi
+
+{{- if eq .chezmoi.os "linux" }}
+if command -v paru >/dev/null 2>&1; then
+  alias yay="paru"
+fi
+{{- end }}
+
+if command -v eza >/dev/null 2>&1; then
+  alias l='eza --color=always --group-directories-first --icons=always'
+  alias ls='eza --color=always --group-directories-first --icons=always'
+  alias la='eza -a --color=always --group-directories-first --icons=always'
+  alias ll='eza -l --color=always --group-directories-first --icons=always'
+  alias lla='eza -la --color=always --group-directories-first --icons=always'
+  alias lt='eza -aT --color=always --group-directories-first --icons'
+  alias tree='eza -T --git-ignore'
+else
+  {{- if eq .chezmoi.os "darwin" }}
+  alias ls='ls -G'
+  {{- else if eq .chezmoi.os "linux" }}
+  alias ls='ls --color=auto'
+  {{- end }}
+fi
+
+function pon() {
+  export http_proxy="http://127.0.0.1:7890"
+  export https_proxy="http://127.0.0.1:7890"
+  export HTTP_PROXY="http://127.0.0.1:7890"
+  export HTTPS_PROXY="http://127.0.0.1:7890"
+}
+
+function pof() {
+  unset http_proxy
+  unset https_proxy
+  unset HTTP_PROXY
+  unset HTTPS_PROXY
+  echo "Closed."
+}
+
+[ -r "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
