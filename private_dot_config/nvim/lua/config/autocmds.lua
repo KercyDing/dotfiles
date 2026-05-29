@@ -6,3 +6,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank({ timeout = 120 })
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function(event)
+    vim.keymap.set("n", "q", "<cmd>close<CR>", {
+      buffer = event.buf,
+      desc = "Close quickfix/location list",
+    })
+  end,
+})
+
