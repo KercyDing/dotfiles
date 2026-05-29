@@ -99,11 +99,17 @@ float easeClamped(float x) {
 const float DURATION = 0.3;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-    // Calculate animation progress with easing
-    float baseProgress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
-
     vec2 uv = fragCoord / iResolution.xy;
     vec4 background = texture(iChannel0, uv);
+
+    // Ghostty stops the focused animation loop for unfocused split surfaces.
+    if (iFocus == 0) {
+        fragColor = background;
+        return;
+    }
+
+    // Calculate animation progress with easing
+    float baseProgress = clamp((iTime - iTimeCursorChange) / DURATION, 0.0, 1.0);
 
     // Skip further work when animation is complete
     if (baseProgress >= 1.0) {
@@ -171,4 +177,3 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     // Remove trail where it overlaps with current cursor
     fragColor.rgb = mix(fragColor.rgb, originalColor.rgb, step(sdfCurrentCursor, 0.0));
 }
-

@@ -8,6 +8,7 @@ background-opacity = 0.85
 theme = TokyoNight
 copy-on-select = true
 mouse-hide-while-typing = true
+confirm-close-surface = false
 custom-shader = "~/.config/ghostty/shaders/cursor_smear.glsl"
 keybind = ctrl+shift+h=goto_split:left
 keybind = ctrl+shift+l=goto_split:right
