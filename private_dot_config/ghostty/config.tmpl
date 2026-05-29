@@ -1,0 +1,22 @@
+# Common Ghostty config
+
+font-family = Maple Mono NF CN
+theme = dankcolors
+
+background-opacity = 0.85
+background-opacity-cells = true
+
+# Common behavior
+copy-on-select = false
+confirm-close-surface = false
+
+# OS-specific override
+{{- if eq .chezmoi.os "darwin" }}
+config-file = ?config.darwin
+{{- else if eq .chezmoi.os "linux" }}
+config-file = ?config.linux
+{{- end }}
+
+# Machine-local override, not managed by chezmoi
+config-file = ?config.local
+

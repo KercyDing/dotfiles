@@ -1,0 +1,5 @@
+# Linux-only Ghostty config
+
+gtk-titlebar = false
+quit-after-last-window-closed = true
+window-inherit-font-size = false

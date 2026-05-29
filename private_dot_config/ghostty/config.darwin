@@ -1,0 +1,5 @@
+# macOS-only Ghostty config
+
+macos-titlebar-style = tabs
+quit-after-last-window-closed = false
+window-inherit-font-size = false
