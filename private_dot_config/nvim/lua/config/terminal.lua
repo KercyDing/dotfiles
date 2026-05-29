@@ -11,18 +11,16 @@ local function open_right_terminal(cmd)
   vim.b[terminal_marker] = true
   vim.api.nvim_buf_set_name(0, terminal_name)
 
-  local job_id = vim.fn.jobstart(vim.o.shell, {
+  if not cmd or cmd == "" then
+    cmd = vim.o.shell
+  end
+
+  vim.fn.jobstart(cmd, {
     term = true,
     cwd = vim.fn.getcwd(),
   })
 
   vim.cmd("startinsert")
-
-  if cmd and cmd ~= "" then
-    vim.defer_fn(function()
-      vim.api.nvim_chan_send(job_id, cmd .. "\r")
-    end, 500) -- Give zsh/starship enough time to draw the prompt before echoing input.
-  end
 end
 
 local function is_right_terminal(buf)
