@@ -21,7 +21,7 @@ local function open_right_terminal(cmd)
   if cmd and cmd ~= "" then
     vim.defer_fn(function()
       vim.api.nvim_chan_send(job_id, cmd .. "\r")
-    end, 100)
+    end, 500) -- Give zsh/starship enough time to draw the prompt before echoing input.
   end
 end
 
