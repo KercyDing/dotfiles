@@ -1,0 +1,7 @@
+# Ghostty entry config
+
+{{- if eq .chezmoi.os "darwin" }}
+config-file = ?config.darwin
+{{- else if eq .chezmoi.os "linux" }}
+config-file = ?config.linux
+{{- end }}

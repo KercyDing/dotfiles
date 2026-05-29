@@ -1,0 +1,11 @@
+window-width = 106
+window-height = 32
+font-family = "Maple Mono NF CN"
+font-size = 16
+font-feature = +liga
+window-decoration = true
+background-opacity = 0.85
+theme = TokyoNight
+copy-on-select = true
+mouse-hide-while-typing = true
+custom-shader = "~/.config/ghostty/shaders/cursor_smear.glsl"
