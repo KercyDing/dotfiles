@@ -1,7 +1,7 @@
 window-width = 104
 window-height = 29
 font-family = "Maple Mono NF CN"
-font-size = 14
+font-size = 13
 font-feature = +liga
 window-decoration = true
 background-opacity = 0.85
