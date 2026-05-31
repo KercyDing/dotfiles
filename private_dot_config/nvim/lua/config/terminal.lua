@@ -67,5 +67,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.keymap.set("n", "<leader>zr", function()
       open_right_terminal("zig build run")
     end, { buffer = event.buf, desc = "Zig build run" })
+
+    vim.keymap.set("n", "<leader>zt", function()
+      open_right_terminal("zig build test")
+    end, { buffer = event.buf, desc = "Zig build test" })
   end,
 })
